@@ -10,16 +10,20 @@
   let lastProject = '';
 
   function visual(p) {
-    if (p.visual === 'tripf') return `<div class="visual visual-tripf"><img src="assets/bn-tripf-device.png" alt="Tripf 여행 코스 목록 화면" width="628" height="351"></div>`;
-    return `<div class="visual visual-photo"><img src="assets/cover-${p.id}.webp" alt="${esc(p.name)} 주제를 표현한 AI 생성 콘셉트 이미지" width="1536" height="1024" loading="${p.id==='oz'?'eager':'lazy'}"><span class="image-label">콘셉트 이미지</span></div>`;
+    if (p.id === 'tripf') return `<figure class="project-media media-tripf"><span class="media-kicker">TRIPF / SERVICE</span><img src="assets/bn-tripf-device.png" alt="Tripf 여행 코스 목록 실제 화면" width="628" height="351"><figcaption>여행 코스와 굿즈를 연결하는 서비스</figcaption></figure>`;
+    if (p.id === 'oz') return `<figure class="project-media media-oz"><span class="media-kicker">OZ / CAREER OPERATIONS</span><div class="network-total"><strong>56<span>곳</span></strong><p>공고 연계 기업·이용 플랫폼</p></div><div class="network-metrics">${[['83','인턴십 공고 · 건'],['709','전체 지원자 · 명'],['32','최종 합격자 · 명']].map(([v,l])=>`<div><strong>${v}</strong><span>${l}</span></div>`).join('')}</div><figcaption>기업 발굴에서 지원·합격 관리까지</figcaption></figure>`;
+    if (p.id === 'unity') return `<figure class="project-media media-unity"><span class="media-kicker">UNITY / NPS ANALYSIS</span><div class="nps-crop"><img src="assets/bn-nps-source.png" alt="기존 포트폴리오에 수록된 회차별 NPS 분석 그래프" width="714" height="1011" loading="lazy"></div><figcaption>회차별 NPS와 실제 의견을 함께 분석</figcaption></figure>`;
+    if (p.id === 'mingle') return `<figure class="project-media media-mingle"><span class="media-kicker">MINGLE DAY / LIVE INTERACTION</span><div class="mingle-count"><strong>100<span>명 이상</span></strong><p>함께 참여하는 아이스브레이킹</p></div><div class="live-flow">${[['message-square','응답 수집'],['radio','실시간 동기화'],['list-checks','결과 집계']].map(([i,l],n)=>`${n?icon('arrow-right'):''}<div>${icon(i)}<span>${l}</span></div>`).join('')}</div><figcaption>참여자 답변을 진행자 한 화면으로</figcaption></figure>`;
+    return `<figure class="project-media media-wiki"><span class="media-kicker">INFRASTRUCTURE / KNOWLEDGE BASE</span><div class="wiki-heading">${icon('library')}<strong>팀의 운영 지식,<br>한곳에서 찾도록.</strong></div><div class="knowledge-index">${[['01','Linux · Unix','OS·버전별 분류'],['02','운영 명령어','팀 공동 참조'],['03','장애 대응 이력','기록과 조치 공유']].map(([n,t,d])=>`<div><span>${n}</span><strong>${t}</strong><small>${d}</small></div>`).join('')}</div><figcaption>개인 메모 → 테스트 VM 기반 공유 Wiki</figcaption></figure>`;
   }
 
   function card(p) {
-    return `<a class="project-card ${p.color}" id="card-${p.id}" href="#/project/${p.id}" aria-label="${esc(p.name)} 상세 보기">${visual(p)}<div class="card-copy"><div class="card-meta"><span>${p.number}</span><span>${p.category}</span></div><div class="project-title"><h3>${p.name}</h3>${icon('arrow-up-right')}</div><p class="card-desc">${p.summary}</p><div class="card-bottom"><span>${p.cardMetric}</span></div></div></a>`;
+    const actions={oz:'흩어진 채용 정보를 연결하고,\n지원부터 합격까지 관리했습니다.',tripf:'조회 구조와 캐시를 개선해\n피드 응답시간을 줄였습니다.',unity:'평균에 가려진 원인을 찾아\n직군별 개선안을 제안했습니다.',mingle:'쏟아지는 답변을 모아\n진행자가 바로 확인하도록.',wiki:'개인의 운영 기록을\n팀의 공유 자산으로 바꿨습니다.'};
+    return `<article class="project-panel ${p.color}" id="panel-${p.id}" aria-labelledby="title-${p.id}"><div class="project-split">${visual(p)}<div class="project-copy"><p class="project-category"><span>${p.number}</span> ${p.category}</p><h3 id="title-${p.id}">${p.name}</h3><p class="project-action">${actions[p.id].split('\n').join('<br>')}</p><div class="project-outcome"><strong>${p.cardMetric}</strong>${p.id==='tripf'?'<small>개별 피드 조회 측정값 · 9ms는 캐시 적중 시</small>':''}</div><a class="project-open" id="card-${p.id}" href="#/project/${p.id}" aria-label="${esc(p.name)} 상세 보기">프로젝트 자세히 보기 ${icon('arrow-up-right')}</a></div></div></article>`;
   }
 
   function home() {
-    return `<div class="wrap"><section class="intro" id="home"><div><p class="eyebrow">EDUCATION OPERATIONS & ENGINEERING</p><h1>이빛나</h1><p class="intro-line">운영 현장의 문제를 읽고,<br>데이터와 기술로 해결합니다.</p><p class="intro-note">교육·취업 운영, 서비스 개발, 금융 인프라 운영의 경험을 연결합니다.</p><div class="inline-links"><a href="https://github.com/chews26" target="_blank" rel="noreferrer">GitHub ${icon('arrow-up-right')}</a><a href="https://shinelee26.tistory.com" target="_blank" rel="noreferrer">Blog ${icon('arrow-up-right')}</a><a href="mailto:chews26@naver.com">Email ${icon('arrow-up-right')}</a></div></div><div class="portrait"><img src="assets/bn-notion-cover-v1.png" alt="이빛나 증명사진"></div></section><section id="projects" aria-labelledby="projects-title"><div class="section-heading"><h2 id="projects-title">주요 프로젝트</h2><span>SELECTED WORK · 01–05</span></div><div class="project-grid">${projects.slice(0,2).map(card).join('')}</div><div class="compact-projects">${projects.slice(2).map(card).join('')}</div></section></div>
+    return `<div class="wrap"><section class="intro" id="home"><div><p class="eyebrow">EDUCATION OPERATIONS & ENGINEERING</p><h1>이빛나</h1><p class="intro-line">운영 현장의 문제를 읽고,<br>데이터와 기술로 해결합니다.</p><p class="intro-note">교육·취업 운영, 서비스 개발, 금융 인프라 운영의 경험을 연결합니다.</p><div class="inline-links"><a href="https://github.com/chews26" target="_blank" rel="noreferrer">GitHub ${icon('arrow-up-right')}</a><a href="https://shinelee26.tistory.com" target="_blank" rel="noreferrer">Blog ${icon('arrow-up-right')}</a><a href="mailto:chews26@naver.com">Email ${icon('arrow-up-right')}</a></div></div><div class="portrait"><img src="assets/bn-notion-cover-v1.png" alt="이빛나 증명사진"></div><a class="intro-next" href="#projects">주요 프로젝트 ${icon('arrow-down')}</a></section><section class="projects-section" id="projects" aria-labelledby="projects-title"><div class="section-heading"><div><p class="eyebrow">SELECTED WORK / 01–05</p><h2 id="projects-title">주요 프로젝트</h2></div><span>교육 운영에서 서비스 개발까지</span></div><div class="project-list">${projects.map(card).join('')}</div></section></div>
     <section class="about-band" id="about"><div class="wrap about-grid"><div class="about-intro"><p class="eyebrow">EXPERIENCE & SKILLS</p><h2>현장을 이해하는 운영자,<br>직접 구현하는 개발자.</h2><p>운영의 작은 불편을 발견하고, 데이터를 통해 원인을 살핍니다. 서비스의 흐름을 설계하는 일부터 반복 업무를 줄이는 도구를 만드는 일까지 직접 실행해 왔습니다.</p><div class="skill-groups">${['교육·취업 운영','프로그램 기획','데이터 분석','Java · Spring Boot','Redis · JPA','AWS · Docker','Linux · Unix','Airtable · Notion'].map(s=>`<span class="skill">${s}</span>`).join('')}</div></div><div><div class="career-row"><span class="career-date">2025.09 – 현재</span><h3>넥스트러너스 <span>· 취업운영매니저</span></h3><p>취·창업 프로그램, 채용연계, 수료생 관리와 데이터 자동화</p></div><div class="career-row"><span class="career-date">2025.03 – 2025.08</span><h3>팀스파르타 <span>· Unity 과정 APM</span></h3><p>학습 운영, 만족도 분석, 참여 프로그램 기획과 웹 도구 제작</p></div><div class="career-row"><span class="career-date">2023.07 – 2024.06</span><h3>리눅스데이타시스템</h3><p>금융권 Linux·Unix·VM 인프라 운영</p></div><div class="career-row"><span class="career-date">2022.05 – 2023.07</span><h3>테크니컬서비스엔지니어그룹</h3><p>서버 운영, 보안·감사 대응, 모니터링 및 장애 대응</p></div><p class="education">영남대학교 · 2018–2022<br>새마을국제개발학과 / 사회복지 복수전공</p></div></div></section>
     <div class="wrap"><section class="contact" id="contact"><div><p class="eyebrow">LET'S CONNECT</p><h2>함께 해결할 문제를 기다립니다.</h2><p>프로젝트와 협업에 관한 이야기를 나누고 싶습니다.</p></div><div class="contact-links"><a href="mailto:chews26@naver.com">${icon('mail')} chews26@naver.com</a><a href="https://github.com/chews26" target="_blank" rel="noreferrer">${icon('github')} github.com/chews26 ${icon('arrow-up-right')}</a></div></section></div>`;
   }
@@ -80,9 +84,7 @@
       observer?.disconnect();
       const project=projects.find(p=>p.id===routeId);
       main.innerHTML=routeId==='home'?home():project?detail(project):'<div class="not-found"><h1>프로젝트를 찾을 수 없습니다.</h1><a href="#projects">프로젝트 목록으로 돌아가기</a></div>';
-      if(project&&project.id!=='tripf') {
-        document.querySelector('.detail-hero').insertAdjacentHTML('afterend',`<figure class="detail-cover"><img src="assets/cover-${project.id}.webp" alt="${esc(project.name)} 주제를 표현한 AI 생성 콘셉트 이미지" width="1536" height="1024"><figcaption class="image-label">콘셉트 이미지</figcaption></figure>`);
-      }
+      document.documentElement.classList.toggle('portfolio-home',routeId==='home');
       document.title=project?`${project.name} | 이빛나 포트폴리오`:'이빛나 | 교육 운영과 개발을 연결합니다';
       currentRoute=routeId;
       window.lucide?.createIcons({attrs:{'stroke-width':1.6}});
@@ -96,9 +98,9 @@
       const target=id&&document.getElementById(id);
       if(target) target.scrollIntoView({behavior:'instant',block:'start'});
       else if(changed) window.scrollTo({top:0,behavior:'instant'});
-      if(!match&&lastProject&&(id==='projects'||(changed&&!id))) {
+      if(!match&&changed&&lastProject&&(id==='projects'||!id)) {
         const card=document.getElementById(`card-${lastProject}`);
-        card?.scrollIntoView({behavior:'instant',block:'center'});
+        document.getElementById(`panel-${lastProject}`)?.scrollIntoView({behavior:'instant',block:'start'});
         card?.focus({preventScroll:true});
       }
     });
