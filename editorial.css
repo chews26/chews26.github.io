@@ -1,0 +1,88 @@
+/* A quieter editorial hierarchy keeps the case studies in the foreground. */
+body,button,input,select,textarea{font-family:var(--font)}
+*{letter-spacing:0!important}
+.site-header{background:rgba(255,255,255,.97)}
+.header-inner{min-height:76px}
+.brand{font-size:22px;gap:12px}
+.brand span{font-size:11px;color:#818582;font-weight:500}
+nav{font-size:15px;font-weight:500}
+.intro{padding:58px 0 46px;grid-template-columns:1fr 128px}
+.intro .eyebrow{font-weight:500;color:var(--muted);font-size:12px;margin-bottom:20px}
+.intro h1{font-size:52px;font-weight:750}
+.intro .intro-line{font-size:26px;line-height:1.5;margin-top:14px;font-weight:500}
+.intro-note{font-size:16px;line-height:1.8;max-width:620px}
+.portrait{border-radius:0}
+.inline-links a{font-size:14px;padding-bottom:3px;border-bottom:1px solid #c4cbc7;gap:6px}
+.inline-links svg{width:15px}
+.section-heading{margin:44px 0 26px}
+.section-heading h2{font-size:26px;font-weight:650}
+.project-grid{gap:32px}
+.project-card{border:0;border-radius:0;background:none;overflow:visible;transition:none}
+.project-card:hover{transform:none;border:0;box-shadow:none}
+.project-card .visual{height:auto;aspect-ratio:3/2;border:0;border-radius:4px;background:#f1f4f3}
+.project-card .visual-photo{padding:0}
+.visual-photo img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.project-card:hover .visual-photo img{transform:scale(1.025)}
+.image-label{position:absolute;bottom:12px;right:12px;font-size:10px;color:#46504b;background:#ffffffeb;padding:2px 6px;border-radius:2px}
+.visual-tripf{background:#e7eef5!important;padding:34px 38px}
+.visual-tripf img{width:100%;height:auto;object-fit:contain;transition:transform .35s ease}
+.project-card:hover .visual-tripf img{transform:scale(1.025)}
+.card-copy{padding:22px 0 0;gap:12px}
+.card-meta{font-size:13px;line-height:1.5;color:var(--muted);gap:12px}
+.card-meta span:first-child{color:#8c9690;font-weight:500}
+.project-title{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.project-title svg{width:23px;height:23px;color:#505954;flex:none}
+.project-card h3{font-size:27px;font-weight:650}
+.project-card:hover h3{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.card-desc{font-size:16px;min-height:55px;line-height:1.75;max-width:95%}
+.card-bottom{margin-top:5px;padding-top:16px;color:#273b32;font-size:15px;border-top:1px solid var(--line);font-weight:600}
+.compact-projects{margin-top:48px;gap:28px}
+.compact-projects .visual{height:auto;aspect-ratio:3/2;padding:0}
+.compact-projects .card-copy{padding:19px 0 0}
+.compact-projects .card-meta{font-size:12px}
+.compact-projects h3{font-size:22px}
+.compact-projects .card-desc{font-size:15px;line-height:1.75;min-height:80px}
+.compact-projects .card-bottom{font-size:14px;line-height:1.8}
+.about-band{background:#f6f7f6;margin-top:72px;border-bottom:0;padding:64px 0}
+.about-intro .eyebrow,.contact .eyebrow{font-size:12px;font-weight:500;color:var(--muted)}
+.about-intro h2{font-size:28px;font-weight:650}
+.career-row h3{font-weight:600}.career-row h3 span{font-weight:400}
+.skill{font-size:14px}.career-date{font-size:13px}.career-row p{font-size:15px}
+.contact h2{font-size:26px;font-weight:600}
+.detail-hero h1{font-weight:700;font-size:42px}
+.detail-hero .eyebrow{font-weight:600;font-size:12px;color:var(--muted)}
+.detail-sub{font-size:18px;line-height:1.8}
+.detail-info dt{font-size:13px}.detail-info dd{font-size:15px;line-height:1.75}
+.tag{background:none;border-bottom:1px solid #d3dbd6;color:#59645e;border-radius:0;padding:3px 0;margin-right:12px;font-size:13px}
+.article h2{font-weight:650}.article p{font-size:17px;line-height:1.9}
+.article .lead{font-size:18px}.process-steps p{font-size:16px}
+.article .sub-note{font-size:13px;line-height:1.85}
+.toc a{font-size:14px}.section-number{color:#748078;font-size:12px;font-weight:500}
+.article blockquote{font-weight:500;border-left-color:#a4b6ac;font-size:18px}
+.result-grid{background:none;border:0;gap:30px;border-radius:0}
+.result-metric{border-top:1px solid #becbc3;padding:24px 0;background:none}
+.result-grid.four .result-metric:last-child{background:none}
+.result-metric strong{color:var(--ink);font-size:34px}
+.result-grid.four .result-metric:last-child strong{color:var(--teal)}
+.company-list{font-size:13px}
+.detail-cover{margin:0 0 38px;position:relative;overflow:hidden;border-radius:4px;aspect-ratio:3/1}
+.detail-cover img{width:100%;height:100%;object-fit:cover;object-position:center 48%}
+@media(max-width:1000px){.compact-projects{grid-template-columns:repeat(2,minmax(0,1fr))}.compact-projects .card-desc{min-height:0}.detail-hero h1{font-size:36px}}
+@media(max-width:700px){
+  .header-inner{min-height:68px;padding:13px 22px}.brand{font-size:20px}nav{font-size:13px;gap:15px}
+  .intro{padding:36px 0 32px;grid-template-columns:1fr 78px;gap:20px}.intro h1{font-size:38px}
+  .intro .eyebrow{font-size:10px;margin-bottom:16px;max-width:190px}.intro .intro-line{font-size:20px}
+  .intro-note{font-size:14px}.portrait{margin-top:42px}.inline-links a{font-size:13px}
+  .section-heading{margin:30px 0 21px}.section-heading h2{font-size:23px}
+  .project-grid,.compact-projects{grid-template-columns:1fr;gap:36px}.compact-projects{margin-top:36px}
+  .project-card .visual,.compact-projects .visual{height:auto;aspect-ratio:3/2}.visual-tripf{padding:26px}
+  .card-copy,.compact-projects .card-copy{padding:20px 0 0}.project-card h3,.compact-projects h3{font-size:23px}
+  .card-meta,.compact-projects .card-meta{font-size:12px}.card-desc,.compact-projects .card-desc{font-size:15px;min-height:0;max-width:100%}
+  .card-bottom,.compact-projects .card-bottom{font-size:14px}.about-band{margin-top:48px;padding:40px 0}
+  .about-intro h2{font-size:26px}.career-row p{font-size:14px}.contact h2{font-size:24px}
+  .detail-hero h1{font-size:31px}.detail-info dd{font-size:14px}.detail-sub{font-size:16px}
+  .detail-cover{aspect-ratio:3/2;margin-bottom:20px}.toc{top:68px}.toc a{font-size:13px}
+  .article p{font-size:16px}.process-steps p{font-size:15px}.article .sub-note{font-size:12px}
+  .result-grid{gap:20px}.result-metric{padding:18px 0}.result-metric strong{font-size:28px}
+  .company-list{font-size:12px}.article blockquote{font-size:17px}
+}
